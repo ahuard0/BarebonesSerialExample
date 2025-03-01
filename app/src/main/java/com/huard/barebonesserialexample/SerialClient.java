@@ -1,3 +1,30 @@
+//  Example Arduino Sketch for Serial Client
+//
+//        String inputString = "#|";  // Buffer to store incoming characters
+//        bool stringComplete = false;  // Flag to indicate a complete line
+//
+//        void setup() {
+//          Serial.begin(115200);
+//          while (!Serial);
+//        }
+//
+//        void loop() {
+//          while (Serial.available() > 0) {
+//              char receivedChar = Serial.read();  // Read one character
+//              if (receivedChar == '\n') {  // Check for newline character
+//                  stringComplete = true;  // Set flag when a full line is received
+//              }
+//              else {
+//                  inputString += receivedChar;  // Append character to buffer
+//              }
+//          }
+//
+//          if (stringComplete) {
+//              Serial.println(inputString);  // Echo back the entire collected string
+//              inputString = "#|";  // Clear buffer
+//              stringComplete = false;  // Reset flag
+//          }
+//        }
 package com.huard.barebonesserialexample;
 
 import android.app.PendingIntent;
@@ -11,12 +38,10 @@ import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbEndpoint;
 import android.hardware.usb.UsbInterface;
 import android.hardware.usb.UsbManager;
-import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 
 import java.util.HashMap;
 import java.util.Objects;
@@ -251,7 +276,6 @@ public class SerialClient implements AutoCloseable {
                     // Convert the received data to a string
                     String writtenData = new String(buffer, 0, numBytesWritten);
                     Log.d("USB", "Wrote data: " + writtenData);
-                    updateTerminalStatus("Wrote data: " + writtenData);
                 }
             }
         }
