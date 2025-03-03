@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements StatusConnectedLi
     }
 
     private void onPressOnD7() {
-        connectionManager.client.write("$|_D7_ON\n");
+        connectionManager.client.write("$|_VIBE|4,1,500,50,5,1,500,50,6,0,500,50,7,1,500,50|2069\n");
     }
 
     @Override
